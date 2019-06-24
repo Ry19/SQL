@@ -22,3 +22,64 @@ WHERE name LIKE '_r%';
 SELECT name
 FROM people
 WHERE name NOT LIKE 'A%';
+
+
+select max(duration) from films;
+
+SELECT MAX(gross)
+FROM films
+WHERE RELEASE_YEAR BETWEEN 1994 AND 2012;
+
+SELECT AVG(DURATION)/60.0 AS AVG_DURATION_HOURS
+FROM films;
+
+SELECT NAME
+FROM PEOPLE
+ORDER BY BIRTHDATE;
+
+SELECT *
+FROM FILMS
+WHERE RELEASE_YEAR <> 2015 
+ORDER BY DURATION;
+
+SELECT release_year,avg(duration)
+FROM films
+GROUP BY release_year;
+
+SELECT country, release_year, MIN(gross)
+FROM films
+GROUP BY country, release_year
+ORDER BY country, release_year;
+
+select release_year
+from films 
+group by release_year
+having count(title) > 200;
+
+
+#Modify your query so that only years with an average budget of greater than $60 million are included.
+
+SELECT RELEASE_YEAR,AVG(BUDGET) AS AVG_BUDGET, AVG(GROSS) AS AVG_GROSS
+FROM films
+WHERE RELEASE_YEAR > 1990
+GROUP BY RELEASE_YEAR
+HAVING AVG(BUDGET)> 60000000;
+
+-- select country, average budget, average gross
+SELECT country, AVG(budget) AS avg_budget, AVG(gross) AS avg_gross
+-- from the films table
+FROM films
+-- group by country 
+GROUP BY country
+-- where the country has more than 10 titles
+HAVING COUNT(title) > 10
+-- order by country
+ORDER BY country
+-- limit to only show 5 results
+LIMIT 5;
+
+SELECT title, imdb_score
+FROM films
+JOIN reviews
+ON films.id = reviews.film_id
+WHERE title = 'To Kill a Mockingbird';
