@@ -7,3 +7,18 @@ FROM films
 WHERE release_year BETWEEN 1990 AND 2000
 and budget>100000000
 and (language='Spanish' or language= 'French');
+
+select title,certification from films where certification IN('NC-17','R')
+
+select title 
+from films 
+where budget is NULL;
+
+Get the names of people whose names have 'r' as the second letter. The pattern you need is '_r%'.
+SELECT name
+FROM people
+WHERE name LIKE '_r%';
+
+SELECT name
+FROM people
+WHERE name NOT LIKE 'A%';
