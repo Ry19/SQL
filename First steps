@@ -1,7 +1,3 @@
-SELECT *
-FROM films
-WHERE language='Spanish' and release_year>2000;
-
 SELECT title,release_year
 FROM films
 WHERE release_year BETWEEN 1990 AND 2000
@@ -42,10 +38,6 @@ FROM FILMS
 WHERE RELEASE_YEAR <> 2015 
 ORDER BY DURATION;
 
-SELECT release_year,avg(duration)
-FROM films
-GROUP BY release_year;
-
 SELECT country, release_year, MIN(gross)
 FROM films
 GROUP BY country, release_year
@@ -78,6 +70,7 @@ ORDER BY country
 -- limit to only show 5 results
 LIMIT 5;
 
+#Comparing databases
 SELECT title, imdb_score
 FROM films
 JOIN reviews
